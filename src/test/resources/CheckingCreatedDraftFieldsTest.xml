@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Check Draft Fields Test">
+    <test name="test created draft fields">
+        <groups>
+            <run>
+                <include name="CheckDraft"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.DraftTests">
+                <methods>
+                    <include name="createDraft"/>
+                </methods>
+                <methods>
+                    <include name="checkDraftField"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Login Test">
+    <test name="test login functionality">
+        <groups>
+            <run>
+                <include name="LoginTest"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.DraftTests">
+                <methods>
+                    <include name="loginInMail"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

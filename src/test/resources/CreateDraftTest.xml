@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Create Draft Test">
+    <test name="test creating draft functionality">
+        <groups>
+            <run>
+                <include name="CreateDraft"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.DraftTests">
+                <methods>
+                    <include name="createDraft"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

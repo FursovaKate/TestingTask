@@ -1,0 +1,20 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Deleting Draft Test">
+    <test name="test deleting draft functionality">
+        <groups>
+            <run>
+                <include name="DeleteDraft"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.DraftTests">
+                <methods>
+                    <include name="createDraft"/>
+                </methods>
+                <methods>
+                    <include name="deleteDraft"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
