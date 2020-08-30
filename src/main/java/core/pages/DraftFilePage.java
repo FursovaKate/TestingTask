@@ -22,9 +22,6 @@ public class DraftFilePage extends AbstractPage {
     @FindBy(css = ".cke_inner.cke_reset")
     WebElement messageBodyDraftField;
 
-    @FindBy(css = "._nb-checkbox-flag")
-    List<WebElement> draftCheckbox;
-
     @FindBy(xpath = "//div[contains(@title, 'Удалить (Delete)')]")
     WebElement deleteButton;
 
@@ -40,7 +37,7 @@ public class DraftFilePage extends AbstractPage {
     }
 
     public void openDraft(String email) {
-        driverHelper.waitForVisibilityOfAllElements(".mail-MessageSnippet-FromText");
+        driverHelper.waitForPageUpdate();
         for (WebElement draft : drafts) {
             if (draft.getText().equals(email)) {
                 draft.click();
@@ -75,5 +72,16 @@ public class DraftFilePage extends AbstractPage {
 
     public void deleteButtonClick() {
         deleteButton.click();
+        driverHelper.waitForPageUpdate();
+    }
+
+    public boolean isDraftDisplayed(String name) {
+        for (WebElement info : allDraftInfo) {
+            WebElement title = info.findElement(By.cssSelector(TITLE_SELECTOR));
+            if (title.getText().equals(name)) {
+               return title.isDisplayed();
+            }
+        }
+        return false;
     }
 }

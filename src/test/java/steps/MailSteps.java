@@ -35,7 +35,6 @@ public class MailSteps {
         loginPage.submitButtonClick();
     }
 
-
     public void writeDraft(String email, String subject, String message) {
         mainMailPage.writeLetterButtonClick();
         assertEquals(mainMailPage.isWriteLetterFormVisible(), true);
@@ -56,15 +55,27 @@ public class MailSteps {
         sa.assertAll();
     }
 
-    public void checkLoginAction(String name) {
+    public void checkThatLoginSucceed(String name) {
         loginPage.userIconClick();
         assertEquals(loginPage.getUserAccountName(), name);
     }
 
     public void deleteDraft(String name) {
-
+        mainMailPage.goInDraftFile();
         draftFilePage.draftCheckboxClick(name);
-
         draftFilePage.deleteButtonClick();
+    }
+
+    public void logOut() {
+        loginPage.userIconClick();
+        loginPage.logOutButtonClick();
+    }
+
+    public void checkThatLogOutSucceed() {
+        assertEquals(loginPage.isLoginFormVisible(), true);
+    }
+
+    public void checkDraftDeletedSucceed(String name) {
+        assertEquals(draftFilePage.isDraftDisplayed(name), false);
     }
 }

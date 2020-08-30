@@ -9,7 +9,7 @@ import static core.pages.LoginPageProvider.EMAIL;
 public class DraftTests extends BaseTest {
     @Test(groups = {"LoginTest", "CreateDraft", "CheckDraft", "DeleteDraft"})
     public void loginInMail() {
-        steps.checkLoginAction(EMAIL);
+        steps.checkThatLoginSucceed(EMAIL);
     }
 
     @Test(dataProviderClass = MailDataProvider.class, dataProvider = "getData",
@@ -28,5 +28,12 @@ public class DraftTests extends BaseTest {
             groups = {"DeleteDraft"})
     public void deleteDraft(TestData data) {
         steps.deleteDraft(data.getReceiverEmail());
+        steps.checkDraftDeletedSucceed(data.getReceiverEmail());
+    }
+
+    @Test
+    public void logOut() {
+        steps.logOut();
+        steps.checkThatLogOutSucceed();
     }
 }
