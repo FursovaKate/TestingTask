@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.security.PublicKey;
+
 public class LoginPage extends AbstractPage {
 
     @FindBy(id = "passp-field-login")
@@ -21,6 +23,12 @@ public class LoginPage extends AbstractPage {
     @FindBy(css = ".user-account__subname")
     WebElement userName;
 
+    @FindBy(xpath = "//a[contains(@aria-label, 'Выйти из аккаунта')]")
+    WebElement logOutButton;
+
+    @FindBy(xpath = "//span[contains(text(),'Log in')]/..")
+    WebElement loginButtonIndexPage;
+
     public LoginPage(WebDriver driver) {
         super(driver);
     }
@@ -30,19 +38,33 @@ public class LoginPage extends AbstractPage {
     }
 
     public void submitButtonClick() {
+        driverHelper.waitForPageUpdate();
         submitLoginButton.click();
     }
 
     public void setPasswordField(String pass) {
         setPasswordField.sendKeys(pass);
+        driverHelper.waitForPageUpdate();
     }
 
     public void userIconClick() {
+        driverHelper.waitForPageUpdate();
         driverHelper.waitForElementIsVisible(userIcon);
         userIcon.click();
     }
 
     public String getUserAccountName() {
         return userName.getText();
+    }
+
+    public void logOutButtonClick() {
+        driverHelper.waitForPageUpdate();
+        logOutButton.click();
+        driverHelper.waitForElementIsVisible(loginButtonIndexPage);
+    }
+
+    public boolean isLoginFormVisible() {
+        driverHelper.waitForElementIsVisible(loginButtonIndexPage);
+        return loginButtonIndexPage.isDisplayed();
     }
 }
