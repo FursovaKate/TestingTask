@@ -45,14 +45,6 @@ public class DriverHelper {
         new WebDriverWait(driver, TIME_OUT).until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public void waitForJSComplete() {
-        new WebDriverWait(driver, TIME_OUT).until(ExpectedConditions.jsReturnsValue("complete"));
-    }
-
-    public void waitForListOfElementsToBeVisible(String selector, int numberOfElementsInListMoreThan) {
-        new WebDriverWait(driver, TIME_OUT).until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector(selector), numberOfElementsInListMoreThan));
-    }
-
     public void waitForElementIsVisible(WebElement webElement) {
         new WebDriverWait(driver, TIME_OUT).until(isVisible(webElement));
     }

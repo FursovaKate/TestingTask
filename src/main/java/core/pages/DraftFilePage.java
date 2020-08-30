@@ -79,7 +79,7 @@ public class DraftFilePage extends AbstractPage {
         for (WebElement info : allDraftInfo) {
             WebElement title = info.findElement(By.cssSelector(TITLE_SELECTOR));
             if (title.getText().equals(name)) {
-               return title.isDisplayed();
+                return title.isDisplayed();
             }
         }
         return false;
